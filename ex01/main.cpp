@@ -13,7 +13,7 @@ int main()
 		std::cout << span.getNum(i, ORIGINAL) << "\n";
 	}
 	std::cout << "--------------------\n";
-	std::cout << span.shortestSpan() << "\n";
+	std::cout << "Shortest span is " << span.shortestSpan() << "\n";
 	std::cout << "\n";
 	for (int i =0; i< 3;i++)
 		std::cout << span.getNum(i, SORTED) << "\n";

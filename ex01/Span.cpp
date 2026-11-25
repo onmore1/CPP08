@@ -82,6 +82,8 @@ unsigned int Span::longestSpan()
 
 unsigned int Span::shortestSpan()
 {
+	unsigned int shortest = -1;
+	unsigned int difference;
 	if (this->_vector.size() < 2)
 		throw std::out_of_range("Not enough numbers to calculate a span");
 	if (!this->_sorted)
@@ -90,12 +92,9 @@ unsigned int Span::shortestSpan()
 		std::sort(this->_vectorSorted.begin(), this->_vectorSorted.end());
 		this->_sorted = true;
 	}
-	unsigned int shortest = static_cast<unsigned int>(-1);
 	for (std::vector<int>::size_type i = 1; i < this->_vectorSorted.size(); i++)
 	{
-		unsigned int difference =
-			static_cast<unsigned int>(this->_vectorSorted[i]) -
-			static_cast<unsigned int>(this->_vectorSorted[i - 1]);
+			difference = static_cast<unsigned int>(this->_vectorSorted[i]) - static_cast<unsigned int>(this->_vectorSorted[i - 1]);
 		if (difference < shortest)
 			shortest = difference;
 	}
