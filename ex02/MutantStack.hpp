@@ -1,46 +1,61 @@
 
 #pragma once
 #include <stack>
+#include <iostream>
 
 template <typename T> class MutantStack : public std::stack<T>
 {
 	public:
-		MutantStack() : stack()
+		MutantStack()
 		{
 			std::cout << "Default constructor for MutantStack was called\n";
 		}
-		MutantStack(const MutantStack &src) : stack(src)
+		MutantStack(const MutantStack &src)
 		{
+			*this = src;
 			std::cout << "Custom constructor for MutantStack was called\n";
 		}
 		~MutantStack()
 		{
 			std::cout << "Deconstructor for MutantStack was called\n";
 		}
-		stack &operator=(const MutantStack &src)
+		MutantStack &operator=(const MutantStack &src)
 		{
-			if (*this != src)
-				*this = src;
-			return (*this);
+			this->c = src.c;
+			return *this;
 		}
 		//
-		typedef typename std::deque<T>::iterator dIterator;
-		typedef typename std::deque<t>::iterator constDIterator;
 
-		dIterator begin()
+		typedef typename std::stack<T> stack;
+		typedef typename std::deque<T>::iterator iterator;
+		iterator begin()
 		{
-			return (stack::c.begin());
+			return (this->c.begin());
 		}
-		dIterator end()
+		iterator end()
 		{
-			return (stack::c.end());
+			return (this->c.end());
 		}
-		constDIterator begin() const
+		//
+
+		void push(const T &value)
 		{
-			return (stack::c.begin());
+			std::cout << "Pushing: " << value << "\n";
+			stack::push(value);
 		}
-		constDIterator end() const
+		T top()
 		{
-			return (stack::c.end());
+			std::cout << "Top: ";
+			return (stack::top());
+		}
+		void pop()
+		{
+			std::cout << "Popping: " << stack::top() << "\n";
+			stack::pop();
+		}
+		T size()
+		{
+			std::cout << "Size: ";
+			return (stack::size());
 		}
 };

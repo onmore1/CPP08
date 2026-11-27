@@ -1,8 +1,8 @@
 NAME = ex02
 
-SRCS = main.cpp Span.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
-HEADERS = Span.hpp
+HEADERS = MutantStack.hpp
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++17
